@@ -28,10 +28,11 @@ from streamlit_folium import folium_static
 
 
 # In[2]:
-
+InputHoeveelheid = st.slider('Selecteer hoeveelheid data in te laden', min_value=100, max_value=5000, value=500, step=100)
 
 key = '5bab249f-923c-4cef-88b5-6ddab219f0cd'
-results = 100
+results = InputHoeveelheid
+
 
 url = f'https://api.openchargemap.io/v3/poi/?output=json&countrycode=NL&maxresults={results}&compact=true&verbose=false?key={key}'
 
@@ -599,9 +600,9 @@ fig, ax = plt.subplots()
 
 
 ax.plot(auto_per_jaar['jaar'], auto_per_jaar['counts'], color='blue', marker='o')
-plt.title('hoeveelheid elektrische autos per jaar', fontsize=14)
+plt.title('Hoeveelheid elektrische autos per jaar', fontsize=14)
 plt.xlabel('Jaar', fontsize=14)
-plt.ylabel('elektrische autos', fontsize=14)
+plt.ylabel('Elektrische autos', fontsize=14)
 plt.grid(True)
 plt.show()
 
@@ -616,7 +617,9 @@ ax.plot(auto_per_jaar['jaar'] , auto_per_jaar['cum'], c='red')
 bbox_props = dict(boxstyle="round", fc="w", ec="0.5", alpha=0.9)
 ax.text(2014, 950, 'Richting coefficient = ' + str(angle), ha="center", va="center", size=10,
         bbox=bbox_props)
-
+plt.title('Hoeveelheid elektrische autos per jaar', fontsize=14)
+plt.xlabel('Jaar', fontsize=14)
+plt.ylabel('Elektrische autos', fontsize=14)
 plt.show()
 st.pyplot(fig=fig)
 
